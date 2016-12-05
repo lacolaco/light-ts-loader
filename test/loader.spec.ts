@@ -13,7 +13,7 @@ describe("loader", () => {
                 throw err;
             }
             assert.deepStrictEqual(result, `"use strict";
-var sub_1 = require("./sub");
+const sub_1 = require("./sub");
 function main() {
     console.log(sub_1.sub);
 }
@@ -23,6 +23,7 @@ main();
         };
 
         loader.call({
+            resourcePath: path.resolve("test/fixtures/main.ts"),
             cacheable: () => { },
             async: () => cb,
         }, fixture);
@@ -36,13 +37,14 @@ main();
                 throw err;
             }
             assert.deepStrictEqual(result, `"use strict";
-var path = require("path");
+const path = require("path");
 exports.sub = path.join(__dirname, "sub");
 `
             );
         };
 
         loader.call({
+            resourcePath: path.resolve("test/fixtures/sub.ts"),
             cacheable: () => { },
             async: () => cb,
         }, fixture);

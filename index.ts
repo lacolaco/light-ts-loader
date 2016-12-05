@@ -9,20 +9,24 @@ interface LoaderInstance {
     resourcePath: string;
 }
 
+let _config: any;
+
 function loader(source: string) {
     const _loaderInstance: LoaderInstance = this;
     _loaderInstance.cacheable();
     const callback = _loaderInstance.async();
     const resourcePath = _loaderInstance.resourcePath;
 
-    const config = loadTsConfig(resourcePath);
-    if (!config) {
-        callback(new Error("[light-ts-loader] tsconfig.json doesn't exist!"));
-        return;
+    if (!_config) {
+        _config = loadTsConfig(resourcePath);
+        if (!_config) {
+            callback(new Error("[light-ts-loader] tsconfig.json doesn't exist!"));
+            return;
+        }
     }
 
     try {
-        const result = ts.transpileModule(source, config);
+        const result = ts.transpileModule(source, _config);
         let sourceMap = result.sourceMapText;
         if (sourceMap) {
             sourceMap = fixSourceMapForWebpack(sourceMap, resourcePath);

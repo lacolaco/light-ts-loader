@@ -2,8 +2,6 @@
 
 :zap: Light weight & Lightning fast TypeScript Loader :zap:
 
-----
-
 ## Concepts
 
 - **No Dependencies** => Light weight package
