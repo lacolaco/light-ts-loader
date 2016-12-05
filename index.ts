@@ -47,7 +47,7 @@ function loadTsConfig(path: string) {
     if (!configPath) {
         return undefined;
     }
-    return ts.readConfigFile(configPath, ts.sys.readFile);
+    return ts.readConfigFile(configPath, ts.sys.readFile).config;
 }
 
 export = loader;
