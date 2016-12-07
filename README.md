@@ -1,5 +1,7 @@
 # light-ts-loader
 
+[![Join the chat at https://gitter.im/light-ts-loader/Lobby](https://badges.gitter.im/light-ts-loader/Lobby.svg)](https://gitter.im/light-ts-loader/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 :zap: Light weight & Lightning fast TypeScript Loader :zap:
 
 ## Concepts
