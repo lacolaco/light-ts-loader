@@ -1,5 +1,7 @@
 # light-ts-loader
 
+[![npm version](https://badge.fury.io/js/light-ts-loader.svg)](https://badge.fury.io/js/light-ts-loader)
+[![CircleCI](https://circleci.com/gh/laco0416/light-ts-loader.svg?style=svg)](https://circleci.com/gh/laco0416/light-ts-loader)
 [![Join the chat at https://gitter.im/light-ts-loader/Lobby](https://badges.gitter.im/light-ts-loader/Lobby.svg)](https://gitter.im/light-ts-loader/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 :zap: Light weight & Lightning fast TypeScript Loader :zap:
