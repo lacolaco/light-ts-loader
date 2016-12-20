@@ -30,6 +30,17 @@ module: {
 },
 ```
 
+## Configuration
+
+```js
+plugins: [
+    new webpack.LoaderOptionsPlugin({
+        // use `path.resolve("tsconfig.json")` by default.
+        tsConfigPath: "path/to/your/tsconfig.json", 
+    })
+],
+```
+
 ## Compatibilities (Tested Only)
 
 - TypeScript 2.0
