@@ -7,9 +7,11 @@ interface LoaderInstance {
     cacheable: () => void;
     async: () => (err: Error, source?: string, map?: string) => void;
     resourcePath: string;
+    // from LoaderOptionsPlugin
+    tsConfigPath?: string;
 }
 
-let _config: any;
+console.log(`[light-ts-loader] Using typescript@${ts.version}`);
 
 function loader(source: string) {
     const _loaderInstance: LoaderInstance = this;
@@ -17,16 +19,15 @@ function loader(source: string) {
     const callback = _loaderInstance.async();
     const resourcePath = _loaderInstance.resourcePath;
 
-    if (!_config) {
-        _config = loadTsConfig(resourcePath);
-        if (!_config) {
-            callback(new Error("[light-ts-loader] tsconfig.json doesn't exist!"));
-            return;
-        }
+    let tsConfig: ts.TranspileOptions;
+    tsConfig = loadTsConfig(_loaderInstance.tsConfigPath);
+    if (!tsConfig) {
+        callback(new Error("[light-ts-loader] tsconfig.json doesn't exist!"));
+        return;
     }
 
     try {
-        const result = ts.transpileModule(source, _config);
+        const result = ts.transpileModule(source, tsConfig);
         let sourceMap = result.sourceMapText;
         if (sourceMap) {
             sourceMap = fixSourceMapForWebpack(sourceMap, resourcePath);
@@ -46,12 +47,27 @@ function fixSourceMapForWebpack(baseSourceMap: string, filePath: string) {
     return sourceMapObj;
 }
 
-function loadTsConfig(path: string) {
-    const configPath = ts.findConfigFile(path, ts.sys.fileExists);
-    if (!configPath) {
+const _tsConfigFileMap: {[key: string]: any} = {};
+
+function loadTsConfig(tsConfigPath: string) {
+    const defaultTsConfigPath = path.resolve("tsconfig.json");
+    tsConfigPath = tsConfigPath || defaultTsConfigPath;
+
+    if (_tsConfigFileMap[tsConfigPath]) {
+        return _tsConfigFileMap[tsConfigPath];
+    }
+
+    if (ts.sys.fileExists(tsConfigPath)) {
+        const config = ts.readConfigFile(tsConfigPath, ts.sys.readFile).config;
+        _tsConfigFileMap[tsConfigPath] = config;
+        return config;
+    } else if (ts.sys.fileExists(defaultTsConfigPath)) {
+        const config =  ts.readConfigFile(defaultTsConfigPath, ts.sys.readFile).config;
+        _tsConfigFileMap[defaultTsConfigPath] = config;
+        return config;
+    } else {
         return undefined;
     }
-    return ts.readConfigFile(configPath, ts.sys.readFile).config;
 }
 
 export = loader;
