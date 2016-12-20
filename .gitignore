@@ -3,5 +3,4 @@ node_modules
 index.js
 index.d.ts
 
-test/**/*.js
 build
