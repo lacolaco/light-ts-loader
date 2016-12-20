@@ -3,14 +3,13 @@
         "module": "commonjs",
         "target": "es5",
         "moduleResolution": "node",
-        "noImplicitAny": true,
-        "sourceMap": false,
+        "noEmitOnError": true,
+        "typeRoots": [
+            "../node_modules/@types"
+        ],
         "types": [
             "node",
             "mocha"
         ]
-    },
-    "include": [
-        "index.ts"
-    ]
+    }
 }
