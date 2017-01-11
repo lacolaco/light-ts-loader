@@ -7,6 +7,7 @@ const TEST_CASES = [
     "default",
     "commonjs",
     "explicit-config",
+    "2.1-syntaxes",
 ];
 
 fse.removeSync("build");
