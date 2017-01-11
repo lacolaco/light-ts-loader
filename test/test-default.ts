@@ -1,6 +1,4 @@
-"use strict";
-
-const assert = require("assert");
+import * as assert from "assert";
 
 describe("default", () => {
     it("should import an ES6 module", () => {

@@ -1,6 +1,4 @@
-"use strict";
-
-const assert = require("assert");
+import * as assert from "assert";
 
 describe("explicit-config", () => {
     it("should use tsconfig.explicit-config.json", () => {

@@ -27,9 +27,12 @@ function loader(source: string) {
     }
 
     try {
-        const result = ts.transpileModule(source, tsConfig);
+        const result = ts.transpileModule(source, {
+            compilerOptions: tsConfig.compilerOptions,
+        });
         let sourceMap = result.sourceMapText;
         if (sourceMap) {
+            result.outputText = result.outputText.replace(/^\/\/# sourceMappingURL=[^\r\n]*/gm, "");
             sourceMap = fixSourceMapForWebpack(sourceMap, resourcePath);
             callback(null, result.outputText, sourceMap);
         } else {
