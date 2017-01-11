@@ -1,6 +1,4 @@
-"use strict";
-
-const assert = require("assert");
+import * as assert from "assert";
 
 describe("commonjs", () => {
     it("should import an CommonJS module", () => {

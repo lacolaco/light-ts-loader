@@ -4,6 +4,7 @@
         "target": "es5",
         "moduleResolution": "node",
         "noEmitOnError": true,
+        "sourceMap": true,
         "typeRoots": [
             "../node_modules/@types"
         ],

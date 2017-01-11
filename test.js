@@ -1,5 +1,6 @@
 "use strict";
 
+const path = require("path");
 const webpack = require("webpack");
 const fse = require("fs-extra");
 
@@ -8,6 +9,7 @@ const TEST_CASES = [
     "commonjs",
     "explicit-config",
     "2.1-syntaxes",
+    "source-map",
 ];
 
 fse.removeSync("build");
@@ -17,7 +19,19 @@ TEST_CASES.forEach((c) => {
     const buildPath = `./build/test-${c}.test.js`;
 
     fse.removeSync(buildPath);
-    webpack(require(configPath), (err) => {
+    const config = require(configPath);
+    config.resolve = {
+        extensions: [".ts", ".js"],
+    };
+    config.module = {
+        rules: [
+            {
+                test: /\.ts$/,
+                loader: path.resolve("./index.js"),
+            }
+        ],
+    };
+    webpack(config, (err) => {
         if (err) {
             console.error(err);
             process.exit(1);

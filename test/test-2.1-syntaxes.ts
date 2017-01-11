@@ -1,6 +1,4 @@
-"use strict";
-
-const assert = require("assert");
+import * as assert from "assert";
 
 describe("2.1-syntaxes", () => {
     it("should import a module written in TS2.1", () => {
