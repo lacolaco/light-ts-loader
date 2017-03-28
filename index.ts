@@ -11,7 +11,7 @@ interface LoaderInstance {
     tsConfigPath?: string;
 }
 
-console.log(`[light-ts-loader] Using typescript@${ts.version}`);
+console.warn(`[light-ts-loader] Using typescript@${ts.version}`);
 
 function loader(source: string) {
     const _loaderInstance: LoaderInstance = this;
