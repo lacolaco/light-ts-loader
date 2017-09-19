@@ -1,8 +1,7 @@
 # light-ts-loader
 
 [![npm version](https://badge.fury.io/js/light-ts-loader.svg)](https://badge.fury.io/js/light-ts-loader)
-[![CircleCI](https://circleci.com/gh/laco0416/light-ts-loader.svg?style=svg)](https://circleci.com/gh/laco0416/light-ts-loader)
-[![Join the chat at https://gitter.im/light-ts-loader/Lobby](https://badges.gitter.im/light-ts-loader/Lobby.svg)](https://gitter.im/light-ts-loader/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![CircleCI](https://circleci.com/gh/lacolaco/light-ts-loader/tree/master.svg?style=svg)](https://circleci.com/gh/lacolaco/light-ts-loader/tree/master)
 
 :zap: Light weight & Lightning fast TypeScript Loader :zap:
 
@@ -43,10 +42,10 @@ plugins: [
 ],
 ```
 
-## Compatibilities (Tested Only)
+## Compatibilities (Tested versions)
 
-- TypeScript 2.0
-- webpack 2.1.0
+- TypeScript 2.5
+- webpack 3.6
 
 ## License
 
