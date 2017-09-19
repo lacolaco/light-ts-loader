@@ -1,16 +1,12 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "moduleResolution": "node",
-        "noImplicitAny": true,
-        "sourceMap": false,
-        "types": [
-            "node",
-            "mocha"
-        ]
-    },
-    "include": [
-        "index.ts"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "sourceMap": false,
+    "noEmitHelpers": true,
+    "types": ["node", "mocha"]
+  },
+  "include": ["index.ts"]
 }

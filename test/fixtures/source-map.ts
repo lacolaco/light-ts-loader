@@ -1,7 +1,7 @@
 interface Person {
-    name: string;
+  name: string;
 }
 
 export function createPerson(name: string): Person {
-    return { name };
+  return { name };
 }
